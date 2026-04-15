@@ -1,0 +1,13 @@
+.vs/ 
+Debug/ 
+Release/ 
+x64/ 
+*.user 
+*.exe 
+*.obj 
+*.log 
+*.tlog 
+*.pdb 
+*.ilk 
+simulation_log_*.txt 
+simulation_data_*.csv 

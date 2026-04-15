@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TransportSimulator", "TransportSimulator\TransportSimulator.vcxproj", "{229E9A2A-1D8B-43BB-8F21-2B5A246CE466}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{229E9A2A-1D8B-43BB-8F21-2B5A246CE466}.Debug|x64.ActiveCfg = Debug|x64
+		{229E9A2A-1D8B-43BB-8F21-2B5A246CE466}.Debug|x64.Build.0 = Debug|x64
+		{229E9A2A-1D8B-43BB-8F21-2B5A246CE466}.Debug|x86.ActiveCfg = Debug|Win32
+		{229E9A2A-1D8B-43BB-8F21-2B5A246CE466}.Debug|x86.Build.0 = Debug|Win32
+		{229E9A2A-1D8B-43BB-8F21-2B5A246CE466}.Release|x64.ActiveCfg = Release|x64
+		{229E9A2A-1D8B-43BB-8F21-2B5A246CE466}.Release|x64.Build.0 = Release|x64
+		{229E9A2A-1D8B-43BB-8F21-2B5A246CE466}.Release|x86.ActiveCfg = Release|Win32
+		{229E9A2A-1D8B-43BB-8F21-2B5A246CE466}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9F3EDD82-EB50-4233-8042-325A5EACA90B}
+	EndGlobalSection
+EndGlobal
