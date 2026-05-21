@@ -47,13 +47,16 @@ public:
     int passengers;
     int capacity;
     vector<Passenger*> passengersInside;
+    int completedCycles;
 
     Vehicle(const string& _id, int _capacity, Route* _route)
         : id(_id), capacity(_capacity), route(_route),
         currentStopIndex(0),
         currentStopVertex(0),
         minutesToNextStop(0),
-        passengers(0) {
+        passengers(0),
+        completedCycles(0)
+    {
         if (route && !route->stopIndices.empty()) {
             currentStopVertex = route->stopIndices[0];
         }
@@ -62,15 +65,16 @@ public:
     void moveToNextStop() {
         if (!route || route->stopIndices.empty()) return;
 
-        // Çàïîìèíàåì, îòêóäà åäåì
+        
         int fromIndex = currentStopIndex;
 
-        // Ïåðåõîäèì ê ñëåäóþùåé
+        
         currentStopIndex = (currentStopIndex + 1) % route->stopIndices.size();
         currentStopVertex = route->stopIndices[currentStopIndex];
 
-        // Âðåìÿ ÄÎ ÝÒÎÉ îñòàíîâêè (êîòîðóþ òîëüêî ÷òî ïðîåõàëè)
-        // À íå äî ñëåäóþùåé!
+        if (currentStopIndex == 0 && fromIndex == route->stopIndices.size() - 1) {
+            completedCycles++; 
+        }
         if (fromIndex < route->travelTimes.size()) {
             minutesToNextStop = route->travelTimes[fromIndex];
         }

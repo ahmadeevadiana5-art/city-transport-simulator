@@ -76,7 +76,7 @@ public:
                 }
 
                 v->passengersInside = stillInside;
-                v->passengers = v->passengersInside.size();  // Обновляем счётчик
+                v->passengers = (int)v->passengersInside.size();  // Обновляем счётчик
 
 
                 /*
@@ -89,7 +89,7 @@ public:
             }
         }
 
-        if (currentTime % 10 == 0) generatePassengers();
+        if (currentTime % 5 == 0) generatePassengers();
         if (currentTime % 30 == 0) printStatus();
     }
 
@@ -154,7 +154,7 @@ private:
 
         }
         // Обновляем счётчик пассажиров
-        v->passengers = v->passengersInside.size();
+        v->passengers = (int)v->passengersInside.size();
 
 
         // Кто не влез — остаётся ждать
@@ -206,27 +206,27 @@ private:
 
         if ((hour >= 7 && hour < 9) || (hour >= 17 && hour < 19)) {
             // ЧАС ПИК — много людей на многих остановках
-            maxPassengers = 35;
-            numStopsToGenerate = 5 + (rng() % 4);  // 4-7 остановок
+            maxPassengers = 50;
+            numStopsToGenerate = 6 + (rng() % 5);  // 4-7 остановок
         }
         else if (hour >= 23 || hour < 4) {
             // НОЧЬ — почти никого
-            maxPassengers = 5;
+            maxPassengers = 8;
             numStopsToGenerate = 1 + (rng() % 2);  // 1-2 остановки
         }
         else if (hour >= 4 && hour < 7) {
             // РАННЕЕ УТРО — мало людей
-            maxPassengers = 10;
+            maxPassengers = 20;
             numStopsToGenerate = 2 + (rng() % 2);  // 2-3 остановки
         }
         else if (hour >= 9 && hour < 17) {
             // ДЕНЬ — средний поток
-            maxPassengers = 18;
+            maxPassengers = 35;
             numStopsToGenerate = 3 + (rng() % 3);  // 3-5 остановок
         }
         else {
             // ВЕЧЕР (19-23) — умеренный поток
-            maxPassengers = 15;
+            maxPassengers = 30;
             numStopsToGenerate = 2 + (rng() % 3);  // 2-4 остановки
         }
 

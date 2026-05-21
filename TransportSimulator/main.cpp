@@ -254,6 +254,7 @@ public:
                 cout << "Current stop: " << v->currentStopVertex << "\n";
                 cout << "Passengers: " << v->passengers << "/" << v->capacity;
                 cout << " (" << (v->passengers * 100 / v->capacity) << "%)\n";
+                cout << "Completed cycles: " << v->completedCycles << "\n";
                 cout << "Status: ";
                 if (v->minutesToNextStop > 0) {
                     cout << "moving (" << v->minutesToNextStop << " min to next)\n";
@@ -342,7 +343,8 @@ public:
                 << getTimeOfDayName(currentTime) << "] ===\n";
             for (Vehicle* v : vehicles) {
                 log << v->id << ": stop " << v->currentStopVertex
-                    << " | pass. " << v->passengers << "/" << v->capacity << "\n";
+                    << " | pass. " << v->passengers << "/" << v->capacity 
+                    << " | cycles: " << v->completedCycles << "\n";
             }
         }
         else
@@ -359,7 +361,7 @@ public:
         bool exists = ifstream(csvFilename).good();
         ofstream csv(csvFilename, ios::app);
         if (!exists) {
-            csv << "Time,Vehicle,Type,Stop,Passengers,Capacity\n";
+            csv << "Time,Vehicle,Type,Stop,Passengers,Capacity,Occupancy%,Status,MinutesToNext,Cycles\n";
         }
         for (Vehicle* v : vehicles) {
             csv << formatTime(currentTime) << ","
@@ -367,7 +369,11 @@ public:
                 << (v->route->type == BUS ? "Bus" : "Tram") << ","
                 << v->currentStopVertex << ","
                 << v->passengers << ","
-                << v->capacity << "\n";
+                << v->capacity << ","
+                << (v->passengers * 100 / v->capacity) << "%,"
+                << (v->minutesToNextStop > 0 ? "moving" : "at stop") << ","
+                << v->minutesToNextStop << ","
+                << v->completedCycles << "\n"; 
         }
         csv.close();
     }
@@ -516,7 +522,7 @@ public:
                 writeToCSV();
             }
             else {
-                // ========== ДРУГИЕ КОМАНДЫ ==========
+                
                 char key = toupper(input[0]);
 
                 switch (key) {
